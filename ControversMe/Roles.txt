@@ -1,0 +1,17 @@
+Front End(JS/Ionic):
+Pradyun Magal
+Harad
+Lance
+Kenneth
+Evan
+Arjun
+Johan V
+-------------
+Back End(PHP):
+Kai
+Eric
+Arjun P
+Alex V
+John P
+Johan V
+Ken

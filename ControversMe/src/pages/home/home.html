@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar hideBackButton >
+    <ion-title>
+      Compare-N-Share (Login)
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!--><ion-card align = "center">
+      <ion-card-header>
+        Login
+      </ion-card-header>
+      <ion-card-content>
+        Welcome to Compare-N-Share!
+      </ion-card-content>
+      <ion-card-content>
+        To proceed, please register below:
+      </ion-card-content>
+    </ion-card>-->
+
+  <ion-list>
+  <ion-item>
+    <ion-label floating>Username</ion-label>
+    <ion-input type="text" #username [(ngModel)]="cred.username" [ngModelOptions]="{standalone: true}" >
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" #password [(ngModel)]="cred.password" [ngModelOptions]="{standalone: true}" >
+      </ion-input>      
+    </ion-item>
+    <p>  </p>            
+    
+  </ion-list>
+  
+  <div padding>
+    <button  ion-button block (click)="signIn()" item-left round  type="submit">Sign In</button>
+  <h4 align = "center">Or...</h4>
+      <button ion-button block (click)="register()" item-left round>Register</button>
+  </div>
+  
+</ion-content>
