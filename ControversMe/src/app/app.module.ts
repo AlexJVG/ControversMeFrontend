@@ -5,11 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ToastController } from 'ionic-angular';
 import { Http, Headers, RequestOptions, ConnectionBackend, HttpModule } from '@angular/http';
+import {SocketIoModule, SocketIoConfig} from 'ng-socket-io';
+const config: SocketIoConfig = {url:'http://localhost:3001',options: {}};
 import { Main } from '../pages/mainpage/main';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HomePage1 } from '../pages/home/home.1';
 import { FirstPage } from '../pages/first/first';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { FirstPage } from '../pages/first/first';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {scrollAssist: false, autoFocusAssist: false }),
+    SocketIoModule.forRoot(config),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
