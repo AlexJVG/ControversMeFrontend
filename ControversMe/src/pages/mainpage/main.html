@@ -11,6 +11,6 @@
         Join a Conversation
       </ion-list-header>  
   <ion-list>
-          <button  *ngFor="let item of lists" ion-item click="buttonClick($event)">{{item}}</button>
+          <button  *ngFor="let item of lists" ion-item (click)="buttonClick(item.id)">{{item.name}}</button>
     </ion-list>
 </ion-content>

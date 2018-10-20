@@ -23,7 +23,10 @@ export class Main {
         let id = room;
         let contents = this.rooms[id];
         this.ids.push(id);
-        this.lists.push(contents.name);
+        this.lists.push({
+          id: id,
+          name: contents.name
+        });
         
       }
       console.log(this.lists);
@@ -31,7 +34,8 @@ export class Main {
     });
   }
   buttonClick(index){
-    console.log("in");
+    console.log(index);
+    this.storage.set('currentChatRoom', index);    
     this.storage.set('chatroom', this.ids);
     this.navCtrl.push(MainRedirect);    
   }
