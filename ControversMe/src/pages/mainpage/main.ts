@@ -30,7 +30,8 @@ export class Main {
             
     });
   }
-  buttonClick(){
+  buttonClick(index){
+    console.log("in");
     this.storage.set('chatroom', this.ids);
     this.navCtrl.push(MainRedirect);    
   }
