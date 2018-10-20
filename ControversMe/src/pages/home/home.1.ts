@@ -14,7 +14,7 @@ import { Main } from '../mainpage/main';
 
 export class HomePage1 {
 
-    cred = {firstname: '', lastname: '', username: '', password: '', repassword: '' };
+    cred = {firstname: '', lastname: '', email: '',username: '', password: '', repassword: '' };
     constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController, platform: Platform) {
 
     }
@@ -22,31 +22,45 @@ export class HomePage1 {
         this.navCtrl.push(HomePage);
     }
     register() {
-        if (this.cred.username != "") {
-            if (this.cred.password != "") {
-                if (this.cred.repassword != "") {
-                    if (this.cred.repassword == this.cred.password) {
-                        //Check if strong password
-                        var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
-                        if (mediumRegex.test(this.cred.password)) {
-                            //good password
-                            this.sendPostRequest();
-                            //DO STUFF WITH PASSWORD
-                            this.navCtrl.push(Main);                            
+        if(this.cred.firstname != ""){
+            if(this.cred.lastname !=""){
+                if(this.cred.email !=""){
+                    if (this.cred.username != "") {
+                        if (this.cred.password != "") {
+                            if (this.cred.repassword != "") {
+                                if (this.cred.repassword == this.cred.password) {
+                                    //Check if strong password
+                                    var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+                                    if (mediumRegex.test(this.cred.password)) {
+                                        //good password
+                                        this.sendPostRequest();
+                                        //DO STUFF WITH PASSWORD
+                                        this.navCtrl.push(Main);                            
+                                    } else {
+                                        this.presentToast("Your Password is not strong enough");
+                                    }
+                                } else {
+                                    this.presentToast("Passwords Don't Match");
+                                }
+                            } else {
+                                this.presentToast("No Re-Typed Password");
+                            }
                         } else {
-                            this.presentToast("Your Password is not strong enough");
+                            this.presentToast("No Password");
                         }
                     } else {
-                        this.presentToast("Passwords Don't Match");
+                        this.presentToast("No Username");
                     }
-                } else {
-                    this.presentToast("No Re-Typed Password");
                 }
-            } else {
-                this.presentToast("No Password");
+                else{
+                    this.presentToast("No Email");
+                }
+            }else{
+                this.presentToast("No Last Name");
             }
-        } else {
-            this.presentToast("No Username");
+
+        }else{
+            this.presentToast("No First Name");
         }
     }
     presentToast(text: string) {
