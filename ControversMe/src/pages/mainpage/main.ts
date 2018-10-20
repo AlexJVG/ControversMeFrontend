@@ -2,14 +2,12 @@ import { Component } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { NavController, ToastController } from 'ionic-angular';
 import { HomePage1 } from '../home/home.1';
-import { Main } from '../mainpage/main';
-
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'main.html'
 })
-export class HomePage {
+export class Main {
   cred = { username: '', password: ''};  
   constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController) {
  
@@ -17,7 +15,7 @@ export class HomePage {
   signIn(){
     if (this.cred.username != ""){
       if (this.cred.password != ""){
-        this.navCtrl.push(Main);        
+      
       }else{
         this.presentToast("No Password");        
       }

@@ -5,6 +5,7 @@ import { ToastController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Keyboard} from 'ionic-angular';
 import { App, Platform} from 'ionic-angular';
+import { Main } from '../mainpage/main';
 
 @Component({
     selector: 'page-home',
@@ -31,18 +32,7 @@ export class HomePage1 {
                             //good password
 
                             //DO STUFF WITH PASSWORD
-                            var headers = new Headers();
-                            headers.append("Accept", 'application/json');
-                            headers.append('Content-Type', 'application/json');
-                            let options = new RequestOptions({ headers: headers });
-
-                            var link = 'http://www.com/register.php';
-                            this.http.post(link, { username: this.cred.username, password: this.cred.password }, options).subscribe(data => {
-                                console.log(data['_body']);
-                                this.navCtrl.push(HomePage);
-                            }, error => {
-                                console.log(error);// Error getting the data
-                            });
+                            this.navCtrl.push(Main);                            
                         } else {
                             this.presentToast("Your Password is not strong enough");
                         }

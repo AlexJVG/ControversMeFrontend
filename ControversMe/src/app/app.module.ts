@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ToastController } from 'ionic-angular';
 import { Http, Headers, RequestOptions, ConnectionBackend, HttpModule } from '@angular/http';
-
+import { Main } from '../pages/mainpage/main';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HomePage1 } from '../pages/home/home.1';
@@ -14,7 +14,8 @@ import { HomePage1 } from '../pages/home/home.1';
   declarations: [
     MyApp,
     HomePage,
-    HomePage1
+    HomePage1,
+    Main
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ import { HomePage1 } from '../pages/home/home.1';
   entryComponents: [
     MyApp,
     HomePage,
-    HomePage1
+    HomePage1,
+    Main
   
   ],
   providers: [
