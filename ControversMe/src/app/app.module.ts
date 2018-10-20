@@ -13,6 +13,7 @@ import { HomePage } from '../pages/home/home';
 import { HomePage1 } from '../pages/home/home.1';
 import { FirstPage } from '../pages/first/first';
 import { MainRedirect } from '../pages/redirect/main';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MainRedirect } from '../pages/redirect/main';
     HttpModule,
     IonicModule.forRoot(MyApp, {scrollAssist: false, autoFocusAssist: false }),
     SocketIoModule.forRoot(config),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
