@@ -17,7 +17,7 @@ export class HomePage {
   signIn(){
     if (this.cred.username != ""){
       if (this.cred.password != ""){
-        this.navCtrl.push(Main);        
+        this.sendPostRequest();       
       }else{
         this.presentToast("No Password");        
       }
@@ -41,4 +41,28 @@ export class HomePage {
   
     toast.present();
   }
+  sendPostRequest() {
+        var headers = new Headers();
+        headers.append("Accept", 'application/json');
+        headers.append('Content-Type', 'application/json' );
+        const requestOptions = new RequestOptions({ headers: headers});
+    
+        let postData = {
+                "email": this.cred.username,
+                "password": this.cred.password
+                
+        }
+    
+        this.http.post("http://192.168.7.165:8080/api/login", postData, requestOptions)
+          .subscribe(data => {
+            console.log(data);
+            if (JSON.parse(data._body).success == true){
+                this.navCtrl.push(Main);                                            
+            }else{
+                this.presentToast(JSON.parse(data._body).error);
+            }
+            }, error => {
+            console.log(error);
+          });
+        }
 }
