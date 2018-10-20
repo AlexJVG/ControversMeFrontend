@@ -14,7 +14,7 @@ import { Main } from '../mainpage/main';
 
 export class HomePage1 {
 
-    cred = {firstname: '', lastname: '', email: '',username: '', password: '', repassword: '' };
+    cred = {firstname: '', lastname: '', email: '',username: '', password: '', repassword: '' , bio: ''};
     constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController, platform: Platform) {
 
     }
@@ -88,7 +88,7 @@ export class HomePage1 {
                 "last_name": this.cred.lastname,
                 "first_name": this.cred.firstname,
                 "email": this.cred.email,
-                "bio": "This is a predefinied",
+                "bio": this.cred.bio,
                 "password": this.cred.password
                 
         }

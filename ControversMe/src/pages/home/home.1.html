@@ -53,6 +53,12 @@
       </ion-input>
     </ion-item>
     <p>  </p>                
+  
+    <ion-item>
+      <ion-label floating>Bio (Optional)</ion-label>        
+      <ion-textarea [(ngModel)]="cred.bio" [ngModelOptions]="{standalone: true}"></ion-textarea>
+    </ion-item>
+    <p>  </p>                
   </ion-list>
 
   <div padding>
