@@ -32,7 +32,6 @@ export class HomePage1 {
                             //good password
                             this.sendPostRequest();
                             //DO STUFF WITH PASSWORD
-                            this.navCtrl.push(Main);                            
                         } else {
                             this.presentToast("Your Password is not strong enough");
                         }
@@ -69,6 +68,7 @@ export class HomePage1 {
         const requestOptions = new RequestOptions({ headers: headers });
     
         let postData = {
+                "username": "Test",
                 "last_name": "Customer004",
                 "first_name": "Customer004",
                 "email": "customer004@email.com",
@@ -79,8 +79,14 @@ export class HomePage1 {
     
         this.http.post("http://192.168.7.165:8080/api/create-account", postData, requestOptions)
           .subscribe(data => {
-            console.log(data['_body']);
-           }, error => {
+            console.log(data);
+            
+            if (JSON.parse(data._body).success == true){
+                this.navCtrl.push(Main);                                            
+            }else{
+                this.presentToast("test");
+            }
+            }, error => {
             console.log(error);
           });
         }
