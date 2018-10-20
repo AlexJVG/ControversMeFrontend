@@ -31,7 +31,7 @@ export class Main {
     });
   }
   buttonClick(){
-    this.storage.set('chatroom', ids);
+    this.storage.set('chatroom', this.ids);
     this.navCtrl.push(MainRedirect);    
   }
 }
