@@ -60,7 +60,6 @@ export class HomePage {
             if (JSON.parse(data._body).success == true){
                 this.storage.set('token', JSON.parse(data._body).data.token);
                 console.log(JSON.parse(data._body).data.token);
-                //this.navCtrl.push(Main);                                            
             }else{
                 this.presentToast(JSON.parse(data._body).error);
             }
@@ -72,15 +71,16 @@ export class HomePage {
             data._body = JSON.parse(data._body);
             console.log(data);
             if (data._body.success == true){
-                this.storage.set('rooms', data._body.data);
+                this.storage.set('rooms', data._body);
                 console.log(data._body);
+                this.navCtrl.push(Main);                                            
+                
 
               for (let room in data._body.data) {
                 console.log(room);
                 console.log(data._body.data[room]);
               }
 
-                //this.navCtrl.push(Main);                                            
             }else{
                 this.presentToast(data._body.error);
             }

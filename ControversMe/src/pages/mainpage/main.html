@@ -7,26 +7,10 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-list-header>
+        Join a Conversation
+      </ion-list-header>  
   <ion-list>
-    
-      <ion-list-header>
-        Join A Chat Room
-      </ion-list-header>
-    
-      <button ion-item detail-none (click)="buttonClick()">
-        Water is wet! (Convince Me Otherwise)
-      </button>
-    
-      <button ion-item detail-none (click)="buttonClick()">
-        Is Cereal Soup?
-      </button>
-    
-    
-    
-      <!--><a ion-item href="https://www.ionicframework.com">
-        Anchor Item
-      </a><-->
-    
-    
+        <ion-item *ngFor="let item of lists">{{item}}</ion-item>
     </ion-list>
 </ion-content>

@@ -9,12 +9,12 @@ import {Socket} from 'ng-socket-io';
 })
 export class MainRedirect {
   nickname = '';
+  room: any;
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket) {
- 
   }
   joinChat(){
     this.socket.connect();
     this.socket.emit('set-nickname',this.nickname);
-    this.navCtrl.push
+    //this.navCtrl.push
   }
 }
