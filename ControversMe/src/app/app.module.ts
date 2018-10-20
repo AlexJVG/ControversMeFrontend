@@ -9,12 +9,14 @@ import { Http, Headers, RequestOptions, ConnectionBackend, HttpModule } from '@a
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HomePage1 } from '../pages/home/home.1';
+import { FirstPage } from '../pages/first/first';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    HomePage1
+    HomePage1,
+    FirstPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { HomePage1 } from '../pages/home/home.1';
   entryComponents: [
     MyApp,
     HomePage,
-    HomePage1
+    HomePage1,
+    FirstPage
   
   ],
   providers: [
