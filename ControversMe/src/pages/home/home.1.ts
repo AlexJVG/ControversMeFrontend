@@ -36,7 +36,6 @@ export class HomePage1 {
                                     if (mediumRegex.test(this.cred.password)) {
                                         //good password
                                         this.sendPostRequest();
-                                        //DO STUFF WITH PASSWO                         
                                     } else {
                                         this.presentToast("Your Password is not strong enough");
                                     }
@@ -99,7 +98,10 @@ export class HomePage1 {
             console.log(data);
             
             if (JSON.parse(data._body).success == true){
-                this.navCtrl.push(Main);                                            
+                this.presentToast("Account Created");                
+                this.navCtrl.push(HomePage);
+                
+
             }else{
                 this.presentToast(JSON.parse(data._body).error);
             }

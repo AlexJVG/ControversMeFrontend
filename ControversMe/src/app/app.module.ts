@@ -14,6 +14,7 @@ import { HomePage1 } from '../pages/home/home.1';
 import { FirstPage } from '../pages/first/first';
 import { MainRedirect } from '../pages/redirect/main';
 import { IonicStorageModule } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     ToastController,
     HttpModule,
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
