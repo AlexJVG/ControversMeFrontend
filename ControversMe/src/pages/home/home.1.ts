@@ -35,8 +35,7 @@ export class HomePage1 {
                                     if (mediumRegex.test(this.cred.password)) {
                                         //good password
                                         this.sendPostRequest();
-                                        //DO STUFF WITH PASSWORD
-                                        this.navCtrl.push(Main);                            
+                                        //DO STUFF WITH PASSWO                         
                                     } else {
                                         this.presentToast("Your Password is not strong enough");
                                     }
@@ -85,12 +84,12 @@ export class HomePage1 {
         const requestOptions = new RequestOptions({ headers: headers });
     
         let postData = {
-                "username": "Test",
-                "last_name": "Customer004",
-                "first_name": "Customer004",
-                "email": "customer004@email.com",
-                "bio": "0000252525",
-                "password": "0000252525"
+                "username": this.cred.username,
+                "last_name": this.cred.lastname,
+                "first_name": this.cred.firstname,
+                "email": this.cred.email,
+                "bio": "This is a predefinied",
+                "password": this.cred.password
                 
         }
     
@@ -101,7 +100,7 @@ export class HomePage1 {
             if (JSON.parse(data._body).success == true){
                 this.navCtrl.push(Main);                                            
             }else{
-                this.presentToast("test");
+                this.presentToast(JSON.parse(data.body).error);
             }
             }, error => {
             console.log(error);
