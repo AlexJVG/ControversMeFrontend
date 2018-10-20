@@ -7,7 +7,7 @@ import { HomePage1 } from '../home/home.1';
   selector: 'page-home',
   templateUrl: 'main.html'
 })
-export class Main {
+export class MainRedirect {
   cred = { username: '', password: ''};  
   constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController) {
  

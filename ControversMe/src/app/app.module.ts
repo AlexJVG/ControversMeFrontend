@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HomePage1 } from '../pages/home/home.1';
 import { FirstPage } from '../pages/first/first';
+import { MainRedirect } from '../pages/redirect/main';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FirstPage } from '../pages/first/first';
     HomePage,
     HomePage1,
     FirstPage,
-    Main
+    Main,
+    MainRedirect
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { FirstPage } from '../pages/first/first';
     HomePage,
     HomePage1,
     FirstPage,
-    Main
+    Main,
+    MainRedirect
   
   ],
   providers: [
