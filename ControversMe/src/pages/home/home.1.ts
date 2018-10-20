@@ -22,7 +22,6 @@ export class HomePage1 {
         this.navCtrl.push(HomePage);
     }
     register() {
-
         if(this.cred.firstname != ""){
             if(this.cred.lastname !=""){
                 if(this.cred.email !=""){
@@ -30,7 +29,9 @@ export class HomePage1 {
                         if (this.cred.password != "") {
                             if (this.cred.repassword != "") {
                                 if (this.cred.repassword == this.cred.password) {
-                                    //Check if strong password
+                                    if(this.cred.bio == ""){
+                                        this.cred.bio = "Ready to debate";
+                                    }
                                     var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
                                     if (mediumRegex.test(this.cred.password)) {
                                         //good password
@@ -100,7 +101,7 @@ export class HomePage1 {
             if (JSON.parse(data._body).success == true){
                 this.navCtrl.push(Main);                                            
             }else{
-                this.presentToast(JSON.parse(data.body).error);
+                this.presentToast(JSON.parse(data._body).error);
             }
             }, error => {
             console.log(error);
