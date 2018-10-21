@@ -8,6 +8,8 @@ import { HttpModule } from '@angular/http';
 import {SocketIoModule, SocketIoConfig} from 'ng-socket-io';
 const config: SocketIoConfig = {url:'http://192.168.10.14:8080',options: {}};
 import { Main } from '../pages/mainpage/main';
+import { Profile } from '../pages/profile/main';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HomePage1 } from '../pages/home/home.1';
@@ -26,7 +28,8 @@ import {Add} from '../pages/add/main';
     FirstPage,
     Main,
     MainRedirect,
-    Add
+    Add,
+    Profile
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {Add} from '../pages/add/main';
     FirstPage,
     Main,
     MainRedirect,
-    Add
+    Add,
+    Profile
   ],
   providers: [
     StatusBar,

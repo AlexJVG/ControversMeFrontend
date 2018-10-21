@@ -60,10 +60,13 @@ export class MainRedirect {
                 console.log(debater);
                 if (one == 0){
                 this.debaterOne = debater;
+                console.log("2.0");            
+                
                 console.log(this.debaterOne);            
                 
                 }else{
                 this.debaterTwo = debater;
+                console.log("2.0");                            
                 console.log(this.debaterTwo);            
                 
                 }

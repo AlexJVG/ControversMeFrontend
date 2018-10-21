@@ -6,6 +6,7 @@ import { MainRedirect } from '../redirect/main';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular'; //untuk alert
 import { FirstPage } from '../first/first';
+import { Profile } from '../profile/main';
 
 @Component({
   selector: 'page-home',
@@ -88,6 +89,9 @@ export class Main {
 
   }
 });
+}
+profile(){
+  this.navCtrl.push(Profile);      
 }
 presentToast(text: string) {
   let toast = this.toastCtrl.create({
