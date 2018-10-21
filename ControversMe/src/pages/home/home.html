@@ -18,6 +18,8 @@
         To proceed, please register below:
       </ion-card-content>
     </ion-card>-->
+  <div class="cls1" align="center">
+    <h1>Login</h1>
   <ion-list>
   <ion-item>
     <ion-label floating>Email</ion-label>
@@ -30,14 +32,16 @@
       <ion-input type="password" #password [(ngModel)]="cred.password" [ngModelOptions]="{standalone: true}" >
       </ion-input>      
     </ion-item>
-    <p>  </p>            
+    <p>  </p>  
+    <p>  </p>          
     
   </ion-list>
   
   <div padding>
-    <button  ion-button block (click)="signIn()" item-left round  type="submit">Sign In</button>
+    <button  ion-button block (click)="signIn()" item-left round  type="submit" align='center' class="btn1">Sign In</button>
   <h4 align = "center">Or...</h4>
-      <button ion-button block (click)="register()" item-left round>Register</button>
+      <button ion-button block (click)="register()" item-left round class="btn1">Register</button>
+  </div>
   </div>
   
 </ion-content>
