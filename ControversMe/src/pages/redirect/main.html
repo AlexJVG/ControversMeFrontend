@@ -12,11 +12,11 @@
       </ion-list-header>  
 
     <ion-grid>
-    <ion-row *ngFor="let message of messages">
+    <ion-row *ngFor="let message of messages" class="arjun-message">
       
       <ion-col col-9 class="message">
-        <span class="user_name">{{ message.from }}:</span><br>
-        <span>{{ message.text }}</span>
+        <span class="arjun-sender">{{ message.from }}:</span><br>
+        <span class="arjun-text">{{ message.text }}</span>
       </ion-col>
     </ion-row>
   </ion-grid>
