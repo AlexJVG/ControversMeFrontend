@@ -42,7 +42,7 @@ export class MainRedirect {
       
       
       
-      this.http.post("http://192.168.10.14:8080/api/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
+      this.http.post("http://192.168.10.14:8080/api/get-room-info",postDataOne,requestOptionsOne).subscribe((data:any) => {
         data._body = JSON.parse(data._body);
         console.log(data);
         if (data._body.success == true){
@@ -106,7 +106,7 @@ export class MainRedirect {
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/json' );
         const requestOptions = new RequestOptions({ headers: headers});
-      this.http.post("http://192.168.10.14:8080/api/get-old-chats",postData,requestOptions).subscribe(data => {
+      this.http.post("http://192.168.10.14:8080/api/get-old-chats",postData,requestOptions).subscribe((data:any) => {
           data._body = JSON.parse(data._body);
           console.log(data._body.data.debaters);
           if (data._body.success == true){
@@ -162,7 +162,7 @@ export class MainRedirect {
     const requestOptions = new RequestOptions({ headers: headers});
  
     this.http.post("http://192.168.10.14:8080/api/vote-for-person", post, requestOptions)
-    .subscribe(data => {
+    .subscribe((data:any) => {
       console.log(data);
       if (JSON.parse(data._body).success == true){
           
@@ -188,7 +188,7 @@ export class MainRedirect {
     const requestOptions = new RequestOptions({ headers: headers});
 
     this.http.post("http://192.168.10.14:8080/api/vote-for-person", post, requestOptions)
-    .subscribe(data => {
+    .subscribe((data:any) => {
       console.log(data);
       if (JSON.parse(data._body).success == true){
           
