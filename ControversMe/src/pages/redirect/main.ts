@@ -82,9 +82,9 @@ export class MainRedirect {
     this.getUsers().subscribe(data => {
       let user = data['user'];
       if (data['event'] === 'left') {
-        this.showToast('User left: ' + user);
+        console.log('User left: ' + user);
       } else {
-        this.showToast('User joined: ' + user);
+        console.log('User joined: ' + user);
       }
     });
   }
@@ -115,14 +115,5 @@ export class MainRedirect {
  
   ionViewWillLeave() {
     this.socket.emit('leave-room',{room: this.room});
-  }
- 
-  showToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 3000,
-      position: 'top'
-    });
-    toast.present();
   }
 }
