@@ -93,7 +93,7 @@ export class HomePage1 {
                 
         }
     
-        this.http.post("http://192.168.7.165:8080/api/create-account", postData, requestOptions)
+        this.http.post("http://192.168.10.14:8080/api/create-account", postData, requestOptions)
           .subscribe(data => {
             console.log(data);
             
