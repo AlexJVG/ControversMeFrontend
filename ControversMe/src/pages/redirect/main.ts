@@ -66,7 +66,8 @@ export class MainRedirect {
  
   getMessages() {
     let observable = new Observable(observer => {
-      this.socket.on('message', (data) => {
+      this.socket.on('new-live-message', (data) => {
+        console.log(data)
         observer.next(data);
       });
     })
@@ -89,7 +90,7 @@ export class MainRedirect {
   showToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 2000,
+      duration: 3000,
       position: 'top'
     });
     toast.present();
