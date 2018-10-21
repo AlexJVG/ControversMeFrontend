@@ -17,6 +17,7 @@ export class MainRedirect {
     number: any;
     messageOrNah: any;
     username: any;
+    debaters: any[] = [];
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
     this.socket.connect();
     this.storage.get('currentChatRoom').then((val) => {
@@ -34,7 +35,7 @@ export class MainRedirect {
       headersOne.append('Content-Type', 'application/json' );
       const requestOptionsOne = new RequestOptions({ headers: headersOne});
       
-      this.messageOrNah = true;
+      this.messageOrNah = false;
       
       
       
@@ -42,15 +43,28 @@ export class MainRedirect {
         data._body = JSON.parse(data._body);
         console.log(data);
         if (data._body.success == true){
-
+          this.debaters = data._body.data.debaters;
           this.http.post("http://73.202.191.228:8080/api/get-user-data", { token: this.token, }, requestOptionsOne).subscribe((data: any) => {
             data._body = JSON.parse(data._body);
             console.log(data);
             if (data._body.success == true){
               console.log("in");
-          
+              console.log("2.0");            
+              console.log(this.debaters);
               this.username = data._body.data.username;
-              
+              for (let debater in this.debaters) { 
+                console.log(debater);  
+                console.log(this.username);            
+                
+               if (debater == this.username){
+                console.log("2.0");            
+                
+                this.messageOrNah = true;
+    
+               }
+               console.log(this.messageOrNah);            
+               
+              }
             }
             }, error => {
             console.log(error);
@@ -59,21 +73,14 @@ export class MainRedirect {
            console.log(Object.keys(data._body.data.debaters).length);
            this.number = Object.keys(data._body.data.debaters).length; 
            
-           for (let debater in data._body.data.debaters) { 
-            console.log(debater);  
-            console.log(this.username);            
-            
-           if (debater == this.username){
-            this.messageOrNah = false;
-
-           }
-           console.log(this.messageOrNah);            
+         
+           //console.log(this.messageOrNah);            
            
           }
            
            
 
-        }
+        
         }, error => {
         console.log(error);
       });
