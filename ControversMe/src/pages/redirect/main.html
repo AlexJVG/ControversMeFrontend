@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-item ng-show="setUserName()">
     <ion-grid>
     <ion-row *ngFor="let message of messages">
       
@@ -16,7 +17,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
- 
+ </ion-item>
 </ion-content>
  
 <ion-footer>

@@ -11,7 +11,7 @@ import {Observable} from 'rxjs/Observable';
 })
 export class MainRedirect {
     messages = [];
-    nickname = 'testuser';
+    nickname = '';
     message = '';
     room: any;
     token: any;
@@ -87,8 +87,14 @@ export class MainRedirect {
     });
   }
 
-
-
+  setUserName(){
+    if(this.nickname == ""){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
   sendMessage() {
     this.socket.emit('add-message', { text: this.message,token:this.token,room: this.room,nickname: this.nickname });
     this.message = '';
