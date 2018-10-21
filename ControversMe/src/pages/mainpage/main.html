@@ -1,9 +1,13 @@
 <ion-header>
   <ion-navbar hideBackButton >
-    <ion-title>
-      Main
-    </ion-title>
-  </ion-navbar>
+      <ion-title style="padding-left: 20px; text-align: vertical-center">
+              Conversations
+      </ion-title>
+      <ion-buttons end style="padding-right: 80px">
+          <button primary round ion-button block (click)="logout()" item-left round  type="submit" outline>LogOut</button>			
+          
+        </ion-buttons>
+    </ion-navbar>				
 </ion-header>
 
 <ion-content padding>
@@ -11,7 +15,11 @@
         Join a Conversation
       </ion-list-header>  
   <ion-list>
+      <ion-buttons end style="padding-right: 80px">
+          
           <button  *ngFor="let item of lists" ion-item (click)="buttonClick(item.id)">{{item.name}}</button>
+
+      </ion-buttons>
     </ion-list>
   
       

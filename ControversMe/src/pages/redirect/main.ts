@@ -55,7 +55,7 @@ export class MainRedirect {
               console.log("2.0");            
               console.log(this.debaters);
               this.username = data._body.data.username;
-              let one = 0;
+              let one = 0; 
               for (let debater in this.debaters) { 
                 console.log(debater);
                 if (one == 0){
@@ -167,7 +167,7 @@ export class MainRedirect {
       if (JSON.parse(data._body).success == true){
           
       }else{
-          this.presentToast(JSON.parse(data._body).error);
+          //this.presentToast(JSON.parse(data._body).error);
       }
       }, error => {
       console.log(error);
@@ -193,7 +193,7 @@ export class MainRedirect {
       if (JSON.parse(data._body).success == true){
           
       }else{
-          this.presentToast(JSON.parse(data._body).error);
+          //this.presentToast(JSON.parse(data._body).error);
       }
       }, error => {
       console.log(error);
