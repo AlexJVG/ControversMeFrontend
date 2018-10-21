@@ -11,46 +11,17 @@ import {Observable} from 'rxjs/Observable';
 })
 export class MainRedirect {
     messages = [];
-    nickname = '';
+    nickname = 'testuser';
     message = '';
     room: any;
     token: any;
-    number: any;
-    messageOrNah: any;
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
     this.socket.connect();
     this.storage.get('currentChatRoom').then((val) => {
-      
       this.room = val;
-
       this.storage.get('token').then((each) =>{
         this.token = each;
-         let postDataOne = {
-        room: this.room,
-        token: this.token
-      };
-      var headersOne = new Headers();
-      headersOne.append("Accept", 'application/json');
-      headersOne.append('Content-Type', 'application/json' );
-      const requestOptionsOne = new RequestOptions({ headers: headersOne});
-      
-      this.messageOrNah = true;
-      this.http.post("http://73.202.191.228:8080/api/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
-        data._body = JSON.parse(data._body);
-        console.log(data);
-        if (data._body.success == true){
-
-           console.log(data._body.data.debaters);
-           console.log(Object.keys(data._body.data.debaters).length);
-           this.number = Object.keys(data._body.data.debaters).length; 
-           if (this.number == 1 || this.number == 0){
-             this.messageOrNah = false;
-            }
-        }
-        }, error => {
-        console.log(error);
-      });
-      let postData = {
+        let postData = {
         room: this.room,
         token: this.token
       };
@@ -60,7 +31,7 @@ export class MainRedirect {
         const requestOptions = new RequestOptions({ headers: headers});
       this.http.post("http://73.202.191.228:8080/api/get-old-chats",postData,requestOptions).subscribe(data => {
           data._body = JSON.parse(data._body);
-          console.log(data._body.data.debaters);
+          console.log(data);
           if (data._body.success == true){
 
               this.messages = [].concat(data._body.data, this.messages);
@@ -82,22 +53,23 @@ export class MainRedirect {
     this.getUsers().subscribe(data => {
       let user = data['user'];
       if (data['event'] === 'left') {
-        console.log('User left: ' + user);
+        this.showToast('User left: ' + user);
       } else {
-        console.log('User joined: ' + user);
+        this.showToast('User joined: ' + user);
       }
     });
   }
 
+
+
   sendMessage() {
-    this.socket.emit('add-message', { text: this.message,token:this.token,room: this.room,nickname: this.nickname });
+    this.socket.emit('add-message', { text: this.message });
     this.message = '';
   }
  
   getMessages() {
     let observable = new Observable(observer => {
-      this.socket.on('new-live-message', (data) => {
-        console.log(data)
+      this.socket.on('message', (data) => {
         observer.next(data);
       });
     })
@@ -114,6 +86,15 @@ export class MainRedirect {
   }
  
   ionViewWillLeave() {
-    this.socket.emit('leave-room',{room: this.room});
+    this.socket.disconnect();
+  }
+ 
+  showToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'top'
+    });
+    toast.present();
   }
 }
