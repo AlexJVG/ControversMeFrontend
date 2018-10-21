@@ -4,26 +4,25 @@
               Conversations
       </ion-title>
       <ion-buttons end style="padding-right: 80px">
-          <button primary round ion-button block (click)="logout()" item-left round  type="submit" outline>LogOut</button>			
-          
+          <button primary round ion-button block (click)="logout()" item-left round  type="submit" outline>LogOut</button>
         </ion-buttons>
     </ion-navbar>				
 </ion-header>
 
 <ion-content padding>
+  <di v class="cls2">
     <ion-list-header>
         Join a Conversation
       </ion-list-header>  
   <ion-list>
       <ion-buttons end style="padding-right: 80px">
-          
-          <button  *ngFor="let item of lists" ion-item (click)="buttonClick(item.id)">{{item.name}}</button>
+          <button  *ngFor="let item of lists" ion-item (click)="buttonClick(item.id)" class="button1">{{item.name}}</button>
 
       </ion-buttons>
-    </ion-list>
-  
-      
+    </ion-list>    
+    </div>  
 </ion-content>
+
 <ion-footer>
     <ion-row center>  
         <ion-col text-center>   
