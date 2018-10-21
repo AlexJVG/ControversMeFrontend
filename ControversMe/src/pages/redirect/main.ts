@@ -60,7 +60,7 @@ export class MainRedirect {
     });
   }
   sendMessage() {
-    this.socket.emit('add-message', { text: this.message });
+    this.socket.emit('add-message', { text: this.message,token:this.token,room: this.room,nickname: this.nickname });
     this.message = '';
   }
  

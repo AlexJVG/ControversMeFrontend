@@ -37,6 +37,7 @@ export class FirstPage {
         console.log(data);
         if (data._body.success == true){
             this.storage.set('rooms', data._body);
+            this.storage.set('token',"c1e617e95904e808e608c890821f68cbd951c0ebed1cf323a556debb52664f613df0234726d3f30557f80fe6de4c657a9309cb47963ce9c9d2f9d35cd98fcf0da9b911bdbe513560aed9148bb3d2dac58ef2e7f756ca2635c4bf71dc946605ae");
             console.log(data._body);
             
 
