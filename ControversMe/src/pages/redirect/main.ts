@@ -21,6 +21,24 @@ export class MainRedirect {
       this.room = val;
       this.storage.get('token').then((each) =>{
         this.token = each;
+        let postData = {
+        room: this.room,
+        token: this.token
+      };
+      var headers = new Headers();
+        headers.append("Accept", 'application/json');
+        headers.append('Content-Type', 'application/json' );
+        const requestOptions = new RequestOptions({ headers: headers});
+      this.http.post("http://192.168.7.165:8080/api/get-old-chats",postData,requestOptions).subscribe(data => {
+          data._body = JSON.parse(data._body);
+          console.log(data);
+          if (data._body.success == true){
+
+              this.messages = [].concat(data._body.data, this.messages);
+          }
+          }, error => {
+          console.log(error);
+        });
         this.socket.emit('join-room', {
       room: this.room,
       nickname: this.nickname,
