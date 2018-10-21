@@ -19,9 +19,11 @@ export class Main {
   rooms: any;
   cred = {name: ''};
   
-  constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController, private storage: Storage, private alertCtrl: AlertController) {
-  
-    storage.get('rooms').then((val) => {
+  constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController, public storage: Storage, private alertCtrl: AlertController) {
+    this.loadNewStorage();
+  }
+  loadNewStorage() {
+    this.storage.get('rooms').then((val) => {
       this.rooms = val.data;
       for (let room in this.rooms) {
         let id = room;

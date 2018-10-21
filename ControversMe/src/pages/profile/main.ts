@@ -21,6 +21,7 @@ export class Profile {
   Last: string = '';
   Email: string = '';
   Username: string = '';
+  Bio: string = '';
   
   constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController, private storage: Storage, private alertCtrl: AlertController) {
     storage.get('token').then((val) => {
@@ -48,6 +49,7 @@ export class Profile {
         this.Last = data._body.data.last_name;
         this.Username= data._body.data.username;
         this.Email = data._body.data.email;
+        this.Bio = data._body.data.bio;
 
       
   
