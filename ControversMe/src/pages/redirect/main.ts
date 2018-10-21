@@ -16,7 +16,7 @@ export class MainRedirect {
     room: any;
     token: any;
     number: any;
-    messageOrNah: true;
+    messageOrNah: any;
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
     this.socket.connect();
     this.storage.get('currentChatRoom').then((val) => {
@@ -34,9 +34,9 @@ export class MainRedirect {
       headersOne.append('Content-Type', 'application/json' );
       const requestOptionsOne = new RequestOptions({ headers: headersOne});
       
+      this.messageOrNah = true;
       
-      
-      this.http.post("http://192.168.10.14:8080/api/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
+      this.http.post("http://73.202.191.228:8080/api/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
         data._body = JSON.parse(data._body);
         console.log(data);
         if (data._body.success == true){
@@ -45,7 +45,7 @@ export class MainRedirect {
            console.log(Object.keys(data._body.data.debaters).length);
            this.number = Object.keys(data._body.data.debaters).length; 
            if (this.number == 1 || this.number == 0){
-             this.messageOrNah == false;
+             this.messageOrNah = false;
             }
         }
         }, error => {
@@ -59,7 +59,7 @@ export class MainRedirect {
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/json' );
         const requestOptions = new RequestOptions({ headers: headers});
-      this.http.post("http://192.168.10.14:8080/api/get-old-chats",postData,requestOptions).subscribe(data => {
+      this.http.post("http://73.202.191.228:8080/api/get-old-chats",postData,requestOptions).subscribe(data => {
           data._body = JSON.parse(data._body);
           console.log(data._body.data.debaters);
           if (data._body.success == true){
