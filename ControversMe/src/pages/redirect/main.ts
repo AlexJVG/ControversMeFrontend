@@ -20,9 +20,12 @@ export class MainRedirect {
     this.storage.get('currentChatRoom').then((val) => {
       
       this.room = val;
-      
-      let postDataOne = {
+
+      this.storage.get('token').then((each) =>{
+        this.token = each;
+         let postDataOne = {
         room: this.room,
+        token: this.token
       };
       var headersOne = new Headers();
       headersOne.append("Accept", 'application/json');
@@ -31,7 +34,7 @@ export class MainRedirect {
       
       
       
-      this.http.post("http://192.168.7.165:8080/api/rooms/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
+      this.http.post("http://192.168.7.165:8080/api/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
         data._body = JSON.parse(data._body);
         console.log(data);
         if (data._body.success == true){
@@ -42,9 +45,6 @@ export class MainRedirect {
         }, error => {
         console.log(error);
       });
-
-      this.storage.get('token').then((each) =>{
-        this.token = each;
       let postData = {
         room: this.room,
         token: this.token
