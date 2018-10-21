@@ -20,8 +20,12 @@
 
 <ion-footer [class.hide]="messageOrNah">
   <ion-toolbar>
-      <button ion-button color="primary" (click)="login()" item-left round  type="submit" outline>Login</button>				
-      <button primary round ion-button block (click)="register()" item-left round  type="submit" outline>Register</button>			
+      <ion-buttons end style="padding-right: 80px">
+          
+      <button style="width: 100px" ion-button color="primary" (click)="one()" item-left round  type="submit" outline>^</button>				
+      <button style="width: 100px" ion-button color="danger"  (click)="two()" item-left round  type="submit" outline>^</button>	
+      
+      </ion-buttons>
   </ion-toolbar>
 </ion-footer>
 
