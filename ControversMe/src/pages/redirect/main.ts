@@ -43,7 +43,7 @@ export class MainRedirect {
            console.log(data._body.data.debaters);
            console.log(Object.keys(data._body.data.debaters).length);
            this.number = Object.keys(data._body.data.debaters).length; 
-           if (this.number == 1 || this.number == 0){
+           if (this.number == 2 || this.number == 0 || this.number == 1 ){
              this.messageOrNah = false;
             }
         }
