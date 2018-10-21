@@ -79,6 +79,7 @@ export class MainRedirect {
                console.log(this.messageOrNah);            
                
               }
+              this.changeName();
             }
             }, error => {
             console.log(error);
@@ -102,6 +103,7 @@ export class MainRedirect {
         room: this.room,
         token: this.token
       };
+      
       var headers = new Headers();
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/json' );
@@ -140,7 +142,13 @@ export class MainRedirect {
     this.socket.emit('add-message', { text: this.message,token:this.token,room: this.room });
     this.message = '';
   }
- 
+  FirstName: string = '';
+  LastName: string = '';
+  changeName():void{
+    this.FirstName = this.debaterOne;
+    this.LastName = this.debaterTwo;
+  }
+
   getMessages() {
     let observable = new Observable(observer => {
       this.socket.on('new-live-message', (data) => {

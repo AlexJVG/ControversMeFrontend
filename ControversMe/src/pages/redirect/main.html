@@ -24,11 +24,11 @@
 
 <ion-footer [class.hide]="messageOrNah">
   <ion-toolbar>
-      <h6 style="padding-left: 60px ">You are Spectating. This Chat Room Is Full.</h6>
+      <h6 style="padding-left: 5px ">You are Spectating. This Chat Room Is Full. (Create-A-Conversation if you like!)</h6>
       
-      <ion-buttons end style="padding-right: 80px">
-      <button style="width: 100px" ion-button block color="primary" (click)="one()" item-left round  type="submit" outline>^</button>				
-      <button style="width: 100px" ion-button block color="danger"  (click)="two()" item-left round  type="submit" outline>^</button>	
+      <ion-buttons end style="padding-right: 5px">
+      <button style="width: 100px" ion-button block color="primary" (click)="one()" item-left round  type="submit" outline style="margin: 1dp">{{ FirstName }}</button>				
+      <button style="width: 100px" ion-button block color="primary"  (click)="two()" item-left round  type="submit" outline style="margin: 1dp">{{ LastName }}</button>	
       
       </ion-buttons>
   </ion-toolbar>
