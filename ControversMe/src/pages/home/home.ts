@@ -78,7 +78,7 @@ export class HomePage {
           .subscribe(data => {
             console.log(data);
             if (JSON.parse(data._body).success == true){
-                this.storage.set('token', JSON.parse(data._body).data.token);
+                this.storage.set('token', JSON.parse(data._body).data.token);                
                 console.log(JSON.parse(data._body).data.token);
                 this.navCtrl.push(Main);                                            
                 

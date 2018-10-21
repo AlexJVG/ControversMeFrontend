@@ -16,6 +16,7 @@ export class MainRedirect {
     token: any;
     number: any;
     messageOrNah: any;
+    username: any;
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
     this.socket.connect();
     this.storage.get('currentChatRoom').then((val) => {
@@ -34,17 +35,38 @@ export class MainRedirect {
       const requestOptionsOne = new RequestOptions({ headers: headersOne});
       
       this.messageOrNah = true;
+      
+      
+      
       this.http.post("http://73.202.191.228:8080/api/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
         data._body = JSON.parse(data._body);
         console.log(data);
         if (data._body.success == true){
 
+          this.http.post("http://73.202.191.228:8080/api/get-user-data",{token: this.token,},requestOptionsOne).subscribe(data => {
+            data._body = JSON.parse(data._body);
+            console.log(data);
+            if (data._body.success == true){
+    
+              this.username = data._body.data.username;
+              
+            }
+            }, error => {
+            console.log(error);
+          }); 
            console.log(data._body.data.debaters);
            console.log(Object.keys(data._body.data.debaters).length);
            this.number = Object.keys(data._body.data.debaters).length; 
-           if (this.number == 2 || this.number == 0 || this.number == 1 ){
-             this.messageOrNah = false;
-            }
+           
+           if(data._body.data.debaters[0] == this.username){
+            this.messageOrNah = false;
+            
+           }
+           if(data._body.data.debaters[1] == this.username){
+            this.messageOrNah = false;
+            
+          }
+
         }
         }, error => {
         console.log(error);
