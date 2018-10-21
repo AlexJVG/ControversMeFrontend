@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from '../home/home';
 import {Main} from '../mainpage/main';
 import { Storage } from '@ionic/storage';
+import { Headers, Http, RequestOptions } from '@angular/http';
 
 /**
  * Generated class for the FirstPage page.
@@ -18,13 +19,41 @@ import { Storage } from '@ionic/storage';
 })
 export class FirstPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public http: Http) {
   }
   login(){
   	this.navCtrl.push(HomePage);
   }
   anon(){
     this.storage.clear();
+      var headers = new Headers();
+      headers.append("Accept", 'application/json');
+      headers.append('Content-Type', 'application/json' );
+      const requestOptions = new RequestOptions({ headers: headers});
+      
+      this.http.get("http://192.168.7.165:8080/api/rooms", requestOptions)
+      .subscribe(data => {
+        data._body = JSON.parse(data._body);
+        console.log(data);
+        if (data._body.success == true){
+            this.storage.set('rooms', data._body);
+            console.log(data._body);
+            
+
+          for (let room in data._body.data) {
+            console.log(room);
+            console.log(data._body.data[room]);
+          }
+
+        }
+        }, error => {
+        console.log(error);
+      });
+  
+    
+ 
+        
+      
   	this.navCtrl.push(Main);
   }
 
