@@ -43,6 +43,7 @@ export class HomePage {
     toast.present();
   }
   sendPostRequest() {
+        this.storage.set("email", this.cred.username);
         var headers = new Headers();
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/json' );

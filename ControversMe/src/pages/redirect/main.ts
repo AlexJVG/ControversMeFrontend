@@ -83,7 +83,10 @@ export class MainRedirect {
                
               }
               this.changeName();
+            }else{
+              this.messageOrNah = true;              
             }
+            
             }, error => {
             console.log(error);
           }); 
