@@ -64,6 +64,10 @@ export class MainRedirect {
               this.messageOrNah = true;
  
            }
+           if (debater == this.username){
+            this.messageOrNah = false;
+
+         }
           }
            
            
