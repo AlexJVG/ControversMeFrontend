@@ -55,7 +55,7 @@ export class MainRedirect {
         const requestOptions = new RequestOptions({ headers: headers});
       this.http.post("http://192.168.10.14:8080/api/get-old-chats",postData,requestOptions).subscribe(data => {
           data._body = JSON.parse(data._body);
-          console.log(data);
+          console.log(data._body.data.debaters);
           if (data._body.success == true){
 
               this.messages = [].concat(data._body.data, this.messages);
