@@ -136,6 +136,13 @@ export class MainRedirect {
     })
     return observable;
   }
+  one(){
+
+  }
+  two(){
+    
+  }
+
  
   getUsers() {
     let observable = new Observable(observer => {
