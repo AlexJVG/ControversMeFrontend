@@ -34,7 +34,7 @@ export class MainRedirect {
       headersOne.append('Content-Type', 'application/json' );
       const requestOptionsOne = new RequestOptions({ headers: headersOne});
       
-      this.messageOrNah = true;
+      this.messageOrNah = false;
       
       
       
@@ -45,7 +45,7 @@ export class MainRedirect {
 
           this.http.post("http://73.202.191.228:8080/api/get-user-data",{token: this.token,},requestOptionsOne).subscribe(data => {
             data._body = JSON.parse(data._body);
-            console.log(data);
+            console.log('Rons',data._body.data.username);
             if (data._body.success == true){
     
               this.username = data._body.data.username;
@@ -59,8 +59,9 @@ export class MainRedirect {
            this.number = Object.keys(data._body.data.debaters).length; 
            
            for (let debater in data._body.data.debaters) { 
+             console.log('test',debater)
             if (debater != this.username){
-              this.messageOrNah = false;
+              this.messageOrNah = true;
  
            }
           }

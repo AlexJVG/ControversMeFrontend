@@ -18,14 +18,14 @@
   </ion-grid>
 </ion-content>
 
-<ion-footer [class.hide]="!messageOrNah">
+<ion-footer [class.hide]="messageOrNah">
   <ion-toolbar>
       <button ion-button color="primary" (click)="login()" item-left round  type="submit" outline>Login</button>				
       <button primary round ion-button block (click)="register()" item-left round  type="submit" outline>Register</button>			
   </ion-toolbar>
 </ion-footer>
 
-<ion-footer [class.hide]="messageOrNah">
+<ion-footer [class.hide]="!messageOrNah">
   <ion-toolbar>
     <ion-row class="message_row">
       <ion-col col-9>
