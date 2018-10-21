@@ -13,7 +13,7 @@ export class Main {
   room: any;  
   lists: any[] = [];  
   ids: any[] = [];  
-  
+  rooms: any;
   cred = { username: '', password: ''};  
   constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController, private storage: Storage) {
    
