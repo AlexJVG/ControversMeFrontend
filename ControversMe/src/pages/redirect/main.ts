@@ -18,10 +18,34 @@ export class MainRedirect {
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
     this.socket.connect();
     this.storage.get('currentChatRoom').then((val) => {
+      
       this.room = val;
+      
+      let postDataOne = {
+        room: this.room,
+      };
+      var headersOne = new Headers();
+      headersOne.append("Accept", 'application/json');
+      headersOne.append('Content-Type', 'application/json' );
+      const requestOptionsOne = new RequestOptions({ headers: headersOne});
+      
+      
+      
+      this.http.post("http://192.168.7.165:8080/api/rooms/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
+        data._body = JSON.parse(data._body);
+        console.log(data);
+        if (data._body.success == true){
+
+           console.log(data._body.debaters);
+
+        }
+        }, error => {
+        console.log(error);
+      });
+
       this.storage.get('token').then((each) =>{
         this.token = each;
-        let postData = {
+      let postData = {
         room: this.room,
         token: this.token
       };
