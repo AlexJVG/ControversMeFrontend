@@ -54,7 +54,7 @@ export class HomePage {
                 
         }
         this.http.get("http://73.202.191.228:8080/api/rooms", requestOptions)
-        .subscribe(data => {
+          .subscribe((data: any) => {
           data._body = JSON.parse(data._body);
           console.log(data);
           if (data._body.success == true){
@@ -75,7 +75,7 @@ export class HomePage {
         });
     
         this.http.post("http://73.202.191.228:8080/api/login", postData, requestOptions)
-          .subscribe(data => {
+          .subscribe((data: any) => {
             console.log(data);
             if (JSON.parse(data._body).success == true){
                 this.storage.set('token', JSON.parse(data._body).data.token);                

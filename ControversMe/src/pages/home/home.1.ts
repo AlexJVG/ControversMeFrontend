@@ -94,7 +94,7 @@ export class HomePage1 {
         }
     
         this.http.post("http://73.202.191.228:8080/api/create-account", postData, requestOptions)
-          .subscribe(data => {
+            .subscribe((data: any) => {
             console.log(data);
             
             if (JSON.parse(data._body).success == true){

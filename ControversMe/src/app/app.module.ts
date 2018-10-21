@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ToastController } from 'ionic-angular';
-import { Http, Headers, RequestOptions, ConnectionBackend, HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import {SocketIoModule, SocketIoConfig} from 'ng-socket-io';
 const config: SocketIoConfig = {url:'http://73.202.191.228:8080',options: {}};
 import { Main } from '../pages/mainpage/main';
@@ -44,7 +44,6 @@ import {Add} from '../pages/add/main';
     Main,
     MainRedirect,
     Add
-  
   ],
   providers: [
     StatusBar,

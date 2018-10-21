@@ -38,7 +38,7 @@ export class FirstPage {
       const requestOptions = new RequestOptions({ headers: headers});
       
       this.http.get("http://73.202.191.228:8080/api/rooms", requestOptions)
-      .subscribe(data => {
+        .subscribe((data: any) => {
         data._body = JSON.parse(data._body);
         console.log(data);
         if (data._body.success == true){
