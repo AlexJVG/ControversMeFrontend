@@ -5,6 +5,7 @@ import { HomePage1 } from '../home/home.1';
 import { MainRedirect } from '../redirect/main';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular'; //untuk alert
+import { FirstPage } from '../first/first';
 
 @Component({
   selector: 'page-home',
@@ -18,7 +19,7 @@ export class Main {
   cred = {name: ''};
   
   constructor(public navCtrl: NavController, public http: Http, private toastCtrl: ToastController, private storage: Storage, private alertCtrl: AlertController) {
-   
+  
     storage.get('rooms').then((val) => {
       this.rooms = val.data;
       for (let room in this.rooms) {
@@ -138,5 +139,10 @@ sendPostRequest(val, data) {
       console.log(error);
     });
 
+  }
+  logout(){
+    this.storage.clear();
+    this.navCtrl.push(FirstPage);    
+    
   }
 }

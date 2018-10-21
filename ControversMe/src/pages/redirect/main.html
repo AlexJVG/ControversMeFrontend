@@ -7,6 +7,10 @@
 </ion-header>
 
 <ion-content>
+    <ion-list-header>
+        Start of Conversation
+      </ion-list-header>  
+
     <ion-grid>
     <ion-row *ngFor="let message of messages">
       
@@ -20,10 +24,11 @@
 
 <ion-footer [class.hide]="messageOrNah">
   <ion-toolbar>
+      <h6 style="padding-left: 60px ">You are Spectating. This Chat Room Is Full.</h6>
+      
       <ion-buttons end style="padding-right: 80px">
-          
-      <button style="width: 100px" ion-button color="primary" (click)="one()" item-left round  type="submit" outline>^</button>				
-      <button style="width: 100px" ion-button color="danger"  (click)="two()" item-left round  type="submit" outline>^</button>	
+      <button style="width: 100px" ion-button block color="primary" (click)="one()" item-left round  type="submit" outline>^</button>				
+      <button style="width: 100px" ion-button block color="danger"  (click)="two()" item-left round  type="submit" outline>^</button>	
       
       </ion-buttons>
   </ion-toolbar>

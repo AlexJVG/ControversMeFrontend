@@ -18,6 +18,9 @@ export class MainRedirect {
     messageOrNah: any;
     username: any;
     debaters: any[] = [];
+    debaterOne: any;
+    debaterTwo: any;
+    
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
     this.socket.connect();
     this.storage.get('currentChatRoom').then((val) => {
@@ -39,12 +42,12 @@ export class MainRedirect {
       
       
       
-        this.http.post("http://73.202.191.228:8080/api/get-room-info", postDataOne, requestOptionsOne).subscribe((data: any) => {
+      this.http.post("http://73.202.191.228:8080/api/get-room-info",postDataOne,requestOptionsOne).subscribe(data => {
         data._body = JSON.parse(data._body);
         console.log(data);
         if (data._body.success == true){
           this.debaters = data._body.data.debaters;
-          this.http.post("http://73.202.191.228:8080/api/get-user-data", { token: this.token, }, requestOptionsOne).subscribe((data: any) => {
+          this.http.post("http://73.202.191.228:8080/api/get-user-data",{token: this.token,},requestOptionsOne).subscribe(data => {
             data._body = JSON.parse(data._body);
             console.log(data);
             if (data._body.success == true){
@@ -52,8 +55,19 @@ export class MainRedirect {
               console.log("2.0");            
               console.log(this.debaters);
               this.username = data._body.data.username;
+              let one = 0; 
               for (let debater in this.debaters) { 
-                console.log(debater);  
+                console.log(debater);
+                if (one == 0){
+                this.debaterOne = debater;
+                console.log(this.debaterOne);            
+                
+                }else{
+                this.debaterTwo = debater;
+                console.log(this.debaterTwo);            
+                
+                }
+                one = one + 1;                
                 console.log(this.username);            
                 
                if (debater == this.username){
@@ -92,7 +106,7 @@ export class MainRedirect {
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/json' );
         const requestOptions = new RequestOptions({ headers: headers});
-        this.http.post("http://73.202.191.228:8080/api/get-old-chats", postData, requestOptions).subscribe((data: any) => {
+      this.http.post("http://73.202.191.228:8080/api/get-old-chats",postData,requestOptions).subscribe(data => {
           data._body = JSON.parse(data._body);
           console.log(data._body.data.debaters);
           if (data._body.success == true){
@@ -137,10 +151,56 @@ export class MainRedirect {
     return observable;
   }
   one(){
+    let post = {
+      room: this.room,
+      token: this.token,
+      toVoteFor: this.debaterOne
+    };
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+    const requestOptions = new RequestOptions({ headers: headers});
+ 
+    this.http.post("http://73.202.191.228:8080/api/vote-for-person", post, requestOptions)
+    .subscribe(data => {
+      console.log(data);
+      if (JSON.parse(data._body).success == true){
+          
+      }else{
+          //this.presentToast(JSON.parse(data._body).error);
+      }
+      }, error => {
+      console.log(error);
+    });
 
-  }
-  two(){
     
+  }
+  
+  two(){
+    let post = {
+      room: this.room,
+      token: this.token,
+      toVoteFor: this.debaterTwo
+    };
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+    const requestOptions = new RequestOptions({ headers: headers});
+
+    this.http.post("http://73.202.191.228:8080/api/vote-for-person", post, requestOptions)
+    .subscribe(data => {
+      console.log(data);
+      if (JSON.parse(data._body).success == true){
+          
+      }else{
+          //this.presentToast(JSON.parse(data._body).error);
+      }
+      }, error => {
+      console.log(error);
+    });
+
+    
+  
   }
 
  
