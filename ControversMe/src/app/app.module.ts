@@ -15,6 +15,7 @@ import { FirstPage } from '../pages/first/first';
 import { MainRedirect } from '../pages/redirect/main';
 import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
+import {Add} from '../pages/add/main';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { Storage } from '@ionic/storage';
     HomePage1,
     FirstPage,
     Main,
-    MainRedirect
+    MainRedirect,
+    Add
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { Storage } from '@ionic/storage';
     HomePage1,
     FirstPage,
     Main,
-    MainRedirect
+    MainRedirect,
+    Add
   
   ],
   providers: [

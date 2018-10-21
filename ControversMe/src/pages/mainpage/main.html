@@ -13,4 +13,13 @@
   <ion-list>
           <button  *ngFor="let item of lists" ion-item (click)="buttonClick(item.id)">{{item.name}}</button>
     </ion-list>
+  
+      
 </ion-content>
+<ion-footer>
+    <ion-row center>  
+        <ion-col text-center>   
+             <button ion-button round center (click)="add()"><ion-icon name="add"></ion-icon></button>             
+            </ion-col> 
+          </ion-row>
+    </ion-footer>

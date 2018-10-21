@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import {FirstPage} from '../pages/first/first';
+
+import {Add} from '../pages/add/main';
 
 @Component({
   templateUrl: 'app.html'

@@ -53,40 +53,41 @@ export class HomePage {
                 "password": this.cred.password
                 
         }
-    
-        this.http.post("http://192.168.7.165:8080/api/login", postData, requestOptions)
+        this.http.get("http://192.168.7.165:8080/api/rooms", requestOptions)
+        .subscribe(data => {
+          data._body = JSON.parse(data._body);
+          console.log(data);
+          if (data._body.success == true){
+              this.storage.set('rooms', data._body);
+              console.log(data._body);
+              
+
+            for (let room in data._body.data) {
+              console.log(room);
+              console.log(data._body.data[room]);
+            }
+
+          }else{
+              this.presentToast(data._body.error);
+          }
+          }, error => {
+          console.log(error);
+        });
+         this.http.post("http://192.168.7.165:8080/api/login", postData, requestOptions)
           .subscribe(data => {
             console.log(data);
             if (JSON.parse(data._body).success == true){
                 this.storage.set('token', JSON.parse(data._body).data.token);
                 console.log(JSON.parse(data._body).data.token);
+                this.navCtrl.push(Main);                                            
+                
             }else{
                 this.presentToast(JSON.parse(data._body).error);
             }
             }, error => {
             console.log(error);
           });
-          this.http.get("http://192.168.7.165:8080/api/rooms", requestOptions)
-          .subscribe(data => {
-            data._body = JSON.parse(data._body);
-            console.log(data);
-            if (data._body.success == true){
-                this.storage.set('rooms', data._body);
-                console.log(data._body);
-                this.navCtrl.push(Main);                                            
-                
-
-              for (let room in data._body.data) {
-                console.log(room);
-                console.log(data._body.data[room]);
-              }
-
-            }else{
-                this.presentToast(data._body.error);
-            }
-            }, error => {
-            console.log(error);
-          });
+          
         }
 
         
