@@ -53,7 +53,7 @@ export class HomePage {
                 "password": this.cred.password
                 
         }
-        this.http.get("http://192.168.7.165:8080/api/rooms", requestOptions)
+        this.http.get("http://192.168.10.14:8080/api/rooms", requestOptions)
         .subscribe(data => {
           data._body = JSON.parse(data._body);
           console.log(data);
@@ -74,7 +74,7 @@ export class HomePage {
           console.log(error);
         });
     
-        this.http.post("http://192.168.7.165:8080/api/login", postData, requestOptions)
+        this.http.post("http://192.168.10.14:8080/api/login", postData, requestOptions)
           .subscribe(data => {
             console.log(data);
             if (JSON.parse(data._body).success == true){

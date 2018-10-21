@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { ToastController } from 'ionic-angular';
 import { Http, Headers, RequestOptions, ConnectionBackend, HttpModule } from '@angular/http';
 import {SocketIoModule, SocketIoConfig} from 'ng-socket-io';
-const config: SocketIoConfig = {url:'http://192.168.7.165:8080',options: {}};
+const config: SocketIoConfig = {url:'http://192.168.10.14:8080',options: {}};
 import { Main } from '../pages/mainpage/main';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';

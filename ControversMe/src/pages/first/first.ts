@@ -37,7 +37,7 @@ export class FirstPage {
       headers.append('Content-Type', 'application/json' );
       const requestOptions = new RequestOptions({ headers: headers});
       
-      this.http.get("http://192.168.7.165:8080/api/rooms", requestOptions)
+      this.http.get("http://192.168.10.14:8080/api/rooms", requestOptions)
       .subscribe(data => {
         data._body = JSON.parse(data._body);
         console.log(data);

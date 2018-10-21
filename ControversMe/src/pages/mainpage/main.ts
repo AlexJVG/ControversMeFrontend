@@ -114,14 +114,14 @@ sendPostRequest(val, data) {
   }
 
   
-    this.http.post("http://192.168.7.165:8080/api/create-room",postData, requestOptions)
+    this.http.post("http://192.168.10.14:8080/api/create-room",postData, requestOptions)
     .subscribe(data => {
       console.log(data);
      
       }, error => {
-      console.loqg(error);
+      console.log(error);
     });
-    this.http.get("http://192.168.7.165:8080/api/rooms", requestOptions)
+    this.http.get("http://192.168.10.14:8080/api/rooms", requestOptions)
     .subscribe(data => {
       data._body = JSON.parse(data._body);
       console.log(data);
