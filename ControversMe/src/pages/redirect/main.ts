@@ -1,6 +1,6 @@
 import { Component,Injectable} from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import {Socket} from 'ng-socket-io';
 import { Storage } from '@ionic/storage';
 import {Observable} from 'rxjs/Observable';
@@ -14,6 +14,7 @@ export class MainRedirect {
     messages = [];
     message = '';
     room: any;
+    roomName: any;
     token: any;
     number: any;
     messageOrNah: any;
@@ -22,8 +23,11 @@ export class MainRedirect {
     debaterOne: any;
     debaterTwo: any;
     
-  constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage) {
     this.socket.connect();
+    this.storage.get('currentChatRoomName').then((val)=>{
+      this.roomName = val;
+    });
     this.storage.get('currentChatRoom').then((val) => {
       
       this.room = val;

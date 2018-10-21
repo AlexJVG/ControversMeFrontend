@@ -18,7 +18,7 @@
       </ion-list-header>  
   <ion-list>
       <ion-buttons end style="padding-right: 80px">
-          <button  *ngFor="let item of lists" ion-item (click)="buttonClick(item.id)" class="button1">{{item.name}}</button>
+          <button  *ngFor="let item of lists" ion-item (click)="buttonClick(item.id,item.name)" class="button1">{{item.name}}</button>
 
       </ion-buttons>
     </ion-list>    

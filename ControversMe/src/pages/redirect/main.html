@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Chat
+      {{this.roomName}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -39,7 +39,7 @@
     <ion-row class="message_row">
       <ion-col col-9>
         <ion-item no-lines>
-          <ion-input type="text" placeholder="Message" [(ngModel)]="message"></ion-input>
+          <ion-input type="text" placeholder="Message" (keyup.enter)="sendMessage()" [(ngModel)]="message"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-3>

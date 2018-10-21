@@ -37,8 +37,9 @@ export class Main {
             
     });
   }
-  buttonClick(index){
+  buttonClick(index,name){
     console.log(index);
+    this.storage.set('currentChatRoomName',name);
     this.storage.set('currentChatRoom', index);    
     this.storage.set('chatroom', this.ids);
     this.navCtrl.push(MainRedirect);    
