@@ -87,7 +87,7 @@ export class MainRedirect {
   }
  
   ionViewWillLeave() {
-    this.socket.emit('leave-room');
+    this.socket.emit('leave-room',{room: this.room});
   }
  
   showToast(msg) {
