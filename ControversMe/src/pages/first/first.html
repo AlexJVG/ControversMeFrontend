@@ -5,24 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
+		
   <ion-navbar>
-    <ion-title>FirstPage</ion-title>
+		<ion-title style="padding-left: 80px">ControversMe</ion-title>
+		<ion-buttons end style="padding-right: 80px">
+				<button primary round ion-button block (click)="login()" item-left round  type="submit" outline>Login</button>				
+				<button primary round ion-button block (click)="register()" item-left round  type="submit" outline>Register</button>								
+			</ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<button  ion-button block (click)="anon()" item-left round  type="submit">Anonymous</button>
-			</ion-col>
-			<ion-col>
-				<button  ion-button block (click)="login()" item-left round  type="submit">Login/Register</button>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+		<h2 style="horizontal-align: middle; padding-left: 80px; padding-right: 80px; padding-top: 20px; padding-bottom: 20px; " 
+	ion-text color="dark">――――――  𝙲𝚘𝚗𝚝𝚛𝚘𝚟𝚎𝚛𝚜𝙼𝚎  ――――――</h2>
+		<h3 style="horizontal-align: middle;" 
+	ion-text color="dark">The debate hub of the Internet</h3>
+
+		<img src="https://nulltx.com/wp-content/uploads/2015/07/debate.jpg" alt="Smiley face" height="600dp" width="100%">
+		<hr>
+		<h2 ion-text color="dark">𝚆𝚑𝚊𝚝 𝚒𝚜 𝙲𝚘𝚗𝚝𝚛𝚘𝚟𝚎𝚛𝚜𝙼𝚎?</h2>
+		<hr>
+		
 
 </ion-content>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from '../home/home';
+import {HomePage1} from '../home/home.1';
+
 import {Main} from '../mainpage/main';
 import { Storage } from '@ionic/storage';
 import { Headers, Http, RequestOptions } from '@angular/http';
@@ -24,6 +26,10 @@ export class FirstPage {
   login(){
   	this.navCtrl.push(HomePage);
   }
+  register(){
+  	this.navCtrl.push(HomePage1);
+  }
+
   anon(){
     this.storage.clear();
       var headers = new Headers();
