@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,Injectable} from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { NavController, ToastController } from 'ionic-angular';
 import {Socket} from 'ng-socket-io';
 import { Storage } from '@ionic/storage';
 import {Observable} from 'rxjs/Observable';
 
+@Injectable()
 @Component({
   selector: 'page-home',
   templateUrl: 'main.html'
@@ -47,7 +48,7 @@ export class MainRedirect {
         console.log(data);
         if (data._body.success == true){
           this.debaters = data._body.data.debaters;
-          this.http.post("http://192.168.10.14:8080/api/get-user-data",{token: this.token,},requestOptionsOne).subscribe(data => {
+          this.http.post("http://192.168.10.14:8080/api/get-user-data",{token: this.token,},requestOptionsOne).subscribe((data:any) => {
             data._body = JSON.parse(data._body);
             console.log(data);
             if (data._body.success == true){
