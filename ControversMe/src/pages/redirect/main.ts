@@ -58,14 +58,14 @@ export class MainRedirect {
            console.log(Object.keys(data._body.data.debaters).length);
            this.number = Object.keys(data._body.data.debaters).length; 
            
-           if(data._body.data.debaters[0] == this.username){
-            this.messageOrNah = false;
-            
+           for (let debater in data._body.data.debaters) { 
+            if (debater != this.username){
+              this.messageOrNah = false;
+ 
            }
-           if(data._body.data.debaters[1] == this.username){
-            this.messageOrNah = false;
-            
           }
+           
+           
 
         }
         }, error => {
