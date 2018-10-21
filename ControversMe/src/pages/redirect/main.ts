@@ -14,13 +14,18 @@ export class MainRedirect {
     nickname = 'testuser';
     message = '';
     room: any;
+    token: any;
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
     this.socket.connect();
     this.storage.get('currentChatRoom').then((val) => {
       this.room = val;
-      this.socket.emit('join-room', {
+      this.storage.get('token').then((each) =>{
+        this.token = each;
+        this.socket.emit('join-room', {
       room: this.room,
-      nickname: this.nickname
+      nickname: this.nickname,
+      token: this.token
+    });
     });
     });
     this.getMessages().subscribe(message => {
