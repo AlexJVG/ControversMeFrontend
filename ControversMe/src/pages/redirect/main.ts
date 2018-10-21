@@ -16,6 +16,7 @@ export class MainRedirect {
     room: any;
     token: any;
     number: any;
+    messageOrNah: true;
   constructor(public navCtrl: NavController, public http: Http, private socket: Socket,private storage: Storage,private toastCtrl: ToastController) {
     this.socket.connect();
     this.storage.get('currentChatRoom').then((val) => {
@@ -43,7 +44,9 @@ export class MainRedirect {
            console.log(data._body.data.debaters);
            console.log(Object.keys(data._body.data.debaters).length);
            this.number = Object.keys(data._body.data.debaters).length; 
-
+           if (this.number == 1 || this.number == 0){
+             this.messageOrNah == false;
+            }
         }
         }, error => {
         console.log(error);
