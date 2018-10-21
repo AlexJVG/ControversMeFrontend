@@ -11,7 +11,6 @@ import {Observable} from 'rxjs/Observable';
 })
 export class MainRedirect {
     messages = [];
-    nickname = '';
     message = '';
     room: any;
     token: any;
@@ -70,7 +69,6 @@ export class MainRedirect {
         });
         this.socket.emit('join-room', {
       room: this.room,
-      nickname: this.nickname,
       token: this.token
     });
     });
@@ -90,7 +88,7 @@ export class MainRedirect {
   }
 
   sendMessage() {
-    this.socket.emit('add-message', { text: this.message,token:this.token,room: this.room,nickname: this.nickname });
+    this.socket.emit('add-message', { text: this.message,token:this.token,room: this.room });
     this.message = '';
   }
  
@@ -114,6 +112,6 @@ export class MainRedirect {
   }
  
   ionViewWillLeave() {
-    this.socket.emit('leave-room',{room: this.room});
+    this.socket.emit('leave-room',{room: this.room,token: this.token});
   }
 }
