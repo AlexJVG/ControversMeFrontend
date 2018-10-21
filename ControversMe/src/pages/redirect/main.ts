@@ -92,7 +92,7 @@ export class MainRedirect {
 
   setUserName(){
     if(this.nickname == ""){
-      return false;
+      return true;
     }
     else{
       return true;
